@@ -76,7 +76,6 @@ execute "run_syncdb" do
   group node['pgd']['group']
 end
 
-#
 dunbrack_selector = ::File.join(pgd, 'pgd_splicer', 'dunbrack_selector.py')
 ftp_update = ::File.join(pgd, 'pgd_splicer', 'ftpupdate.py')
 process_PDBTask = ::File.join(pgd, 'pgd_splicer', 'ProcessPDBTask.py')
