@@ -1,0 +1,35 @@
+{
+  "name": "vagrant",
+  "default_attributes": {
+    "mysql": {
+      "server_root_password": "1991",
+      "server_debian_password": "1991",
+      "server_repl_password": "1991",
+      "allow_remote_root": true
+    },
+    "pgd": {
+      "revision": "develop",
+      "debug": "True",
+      "migrate": "True",
+      "database": {
+        "name": "osuosl",
+        "user": "root",
+        "password": "vagrant",
+        "host": "localhost",
+        "port": ""
+      },
+      "apache": {
+        "server_aliases": ["localhost"]
+      },
+      "superusers": [
+        {
+          "username": "admin",
+          "email": "admin@example.org",
+          "password": "1991"
+        }
+      ]
+    }
+  },
+  "chef_type": "environment",
+  "json_class": "Chef::Environment"
+}

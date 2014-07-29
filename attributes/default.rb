@@ -1,7 +1,8 @@
-default['pgd']['pgd_path'] = "/vagrant/pgd"
+default['pgd']['pgd_path'] = "/home/vagrant/pgd"
 default['pgd']['virtualenv_path'] = "/home/vagrant/vrt"
 default['pgd']['user'] = "vagrant"
 default['pgd']['group'] = "vagrant"
+default['pgd']['superuser'] = []
 
 default['pgd']['application_name'] = "pgd"
 
@@ -14,7 +15,7 @@ default['pgd']['database']['engine'] = "django.db.backends.mysql"
 default['pgd']['database']['name'] = "osuosl"
 default['pgd']['database']['user'] = "root"
 default['pgd']['database']['password'] = "1991"
-default['pgd']['database']['host'] = nil
+default['pgd']['database']['host'] = "localhost"
 default['pgd']['database']['port'] = nil
 
 #Apache cofigurations

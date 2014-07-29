@@ -1,6 +1,8 @@
 ---
 driver:
   name: vagrant
+  synced_folders: 
+    - ["/var/www/work/my/PGD/pgd_1.4/vagrant/pgd", "/home/vagrant/pgd"]
 
 provisioner:
   name: chef_solo
@@ -11,6 +13,11 @@ platforms:
 
 suites:
   - name: default
+    provisioner:
+      solo_rb:
+        environment: vagrant
     run_list:
+      - recipe[pgd_cookbook::create_user]
       - recipe[pgd_cookbook::default]
+      - recipe[pgd_cookbook::database]
     attributes:

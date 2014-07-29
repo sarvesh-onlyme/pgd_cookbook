@@ -13,7 +13,7 @@ mysql_connection_info = {
     :host => db_host,
     :port => db_port,
     :username => server_user || 'root',
-    :password => server_password
+    :password => node['mysql']['server_root_password']
 }
 
 # Postgres Connection info
@@ -40,7 +40,7 @@ end
 
 # Creating database
 log "Creating Database with name #{node['pgd']['database']['name']}"
-database "#{node['pgd']['database']['name']}" do
+database node['pgd']['database']['name'] do
   provider db_provider
   connection connection_info
   action :create
