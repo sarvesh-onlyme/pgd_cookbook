@@ -12,7 +12,7 @@ db_pass = node['pgd']['database']['password']
 mysql_connection_info = {
     :host => db_host,
     :port => db_port,
-    :username => server_user || 'root',
+    :username => 'root', #server_user || 'root',
     :password => node['mysql']['server_root_password']
 }
 

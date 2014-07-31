@@ -13,10 +13,10 @@ default['pgd']['static_url'] = "/static/"	#Trailing slash is must
 
 # Settings.py database
 default['pgd']['database']['engine'] = "django.db.backends.mysql"
-default['pgd']['database']['name'] = "osuosl"
-default['pgd']['database']['user'] = "root"
-default['pgd']['database']['password'] = "1991"
-default['pgd']['database']['host'] = "localhost"
+default['pgd']['database']['name'] = nil
+default['pgd']['database']['user'] = nil
+default['pgd']['database']['password'] = nil
+default['pgd']['database']['host'] = nil
 default['pgd']['database']['port'] = nil
 
 #Apache cofigurations
