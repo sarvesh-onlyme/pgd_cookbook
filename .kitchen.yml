@@ -17,7 +17,6 @@ suites:
       solo_rb:
         environment: vagrant
     run_list:
-      - recipe[pgd_cookbook::create_user]
       - recipe[pgd_cookbook::default]
       - recipe[pgd_cookbook::database]
     attributes:

@@ -1,12 +1,6 @@
 {
   "name": "vagrant",
   "default_attributes": {
-    "mysql": {
-      "server_root_password": "1991",
-      "server_debian_password": "1991",
-      "server_repl_password": "1991",
-      "allow_remote_root": true
-    },
     "pgd": {
       "revision": "develop",
       "debug": "True",
@@ -15,8 +9,8 @@
         "name": "osuosl",
         "user": "root",
         "password": "vagrant",
-        "host": "localhost",
-        "port": ""
+        "host": "",
+        "port": null
       },
       "apache": {
         "server_aliases": ["localhost"]

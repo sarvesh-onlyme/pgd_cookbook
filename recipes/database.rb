@@ -47,48 +47,48 @@ database node['pgd']['database']['name'] do
 end
 
 # Create our user
-database_user db_user do
-  provider db_provider
-  connection connection_info
-  database_name node['pgd']['database']['name']
-  password db_pass
-  action :create
-end
+#database_user db_user do
+#  provider db_provider
+#  connection connection_info
+#  database_name node['pgd']['database']['name']
+#  password db_pass
+#  action :create
+#end
 
 # Give our user permissions to the DB
-database_user db_user do
-  provider db_user_provider
-  connection connection_info
-  database_name node['pgd']['database']['name']
-  privileges [:all]
-  action :grant
-end
+#database_user db_user do
+#  provider db_user_provider
+#  connection connection_info
+#  database_name node['pgd']['database']['name']
+#  privileges [:all]
+#  action :grant
+#end
 
-python = ::File.join(node['pgd']['virtualenv_path'], 'bin', 'python')
-pgd = node['pgd']['pgd_path']
+#python = ::File.join(node['pgd']['virtualenv_path'], 'bin', 'python')
+#pgd = node['pgd']['pgd_path']
 
 # syncdb using django-admin.py
-manage = ::File.join(node['pgd']['pgd_path'], 'manage.py')
-log "Running syncdb for PGD"
-execute "run_syncdb" do
-  command "#{python} #{manage} syncdb"
-  user node['pgd']['user']
-  group node['pgd']['group']
-end
+#manage = ::File.join(node['pgd']['pgd_path'], 'manage.py')
+#log "Running syncdb for PGD"
+#execute "run_syncdb" do
+#  command "#{python} #{manage} syncdb"
+#  user node['pgd']['user']
+#  group node['pgd']['group']
+#end
 
-dunbrack_selector = ::File.join(pgd, 'pgd_splicer', 'dunbrack_selector.py')
-ftp_update = ::File.join(pgd, 'pgd_splicer', 'ftpupdate.py')
-process_PDBTask = ::File.join(pgd, 'pgd_splicer', 'ProcessPDBTask.py')
-selected_proteins = ::File.join(pgd, 'selected_proteins.txt')
+#dunbrack_selector = ::File.join(pgd, 'pgd_splicer', 'dunbrack_selector.py')
+#ftp_update = ::File.join(pgd, 'pgd_splicer', 'ftpupdate.py')
+#process_PDBTask = ::File.join(pgd, 'pgd_splicer', 'ProcessPDBTask.py')
+#selected_proteins = ::File.join(pgd, 'selected_proteins.txt')
 
-log "Selecting Proteins"
-execute "run_protein_select" do
-  cwd pgd
-  command <<-EOS
-  #{python} #{dunbrack_selector} --pipeout > #{selected_proteins}
-  #{python} #{ftp_update} --pipein < #{selected_proteins}
-  #{python} #{process_PDBTask} --pipein < #{selected_proteins}
-  EOS
-  user node['pgd']['user']
-  group node['pgd']['group']
-end
+#log "Selecting Proteins"
+#execute "run_protein_select" do
+#  cwd pgd
+#  command <<-EOS
+#  #{python} #{dunbrack_selector} --pipeout > #{selected_proteins}
+#  #{python} #{ftp_update} --pipein < #{selected_proteins}
+#  #{python} #{process_PDBTask} --pipein < #{selected_proteins}
+#  EOS
+#  user node['pgd']['user']
+#  group node['pgd']['group']
+#end

@@ -10,6 +10,7 @@ default['pgd']['application_name'] = "pgd"
 default['pgd']['debug'] = "True"
 default['pgd']['static_root'] = ::File.join(default['pgd']['pgd_path'], 'static')
 default['pgd']['static_url'] = "/static/"	#Trailing slash is must
+
 # Settings.py database
 default['pgd']['database']['engine'] = "django.db.backends.mysql"
 default['pgd']['database']['name'] = "osuosl"
