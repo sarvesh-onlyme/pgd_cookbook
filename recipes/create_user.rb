@@ -10,10 +10,6 @@ django_admin = ::File.join(venv_bin, 'django-admin.py')
 
 # Use the attributes to bootstrap users if set, otherwise use databag users
 users = node['pgd']['superuser']
-unless users.any?
-  passwords = '1991' #Chef::EncryptedDataBagItem.load("ganeti_webmgr", "passwords")
-  users =  passwords['superusers'] || []
-end
 
 users.each do |user|
   username = user['username']
