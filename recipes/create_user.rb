@@ -27,8 +27,8 @@ users.each do |user|
     #{django_admin} createsuperuser --noinput --username=#{username} --email #{email}
     #{python} -c \"from django.contrib.auth.models import User;u=User.objects.get(username='#{username}');u.set_password('#{password}');u.save();\"
     EOS
-    user node['ganeti_webmgr']['user']
-    group node['ganeti_webmgr']['group']
+    user node['pgd']['user']
+    group node['pgd']['group']
     environment env
   end
 end
