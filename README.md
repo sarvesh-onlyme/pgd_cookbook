@@ -1,23 +1,22 @@
 PGD Cookbook
 =====================
-TODO: Enter the cookbook description here.
-
-e.g.
-This cookbook makes your favorite breakfast sandwich.
+This cookbook is for setting up PGD project for easy development.
 
 Requirements
 ------------
-TODO: List your cookbook requirements. Be sure to include any requirements this cookbook has on platforms, libraries, other cookbooks, packages, operating systems, etc.
+For testing you need the following gems:
 
-e.g.
-#### packages
-- `toaster` - pgd_cookbook needs toaster to brown your bagel.
+- `test-kitchen`
+- `kitchen-vagrant`
+
+If you use berkshelf, you also will want to install the `berkshelf` gem as well.
+
+To install dependencies run 'bundle install' in the root of the directory.
+
 
 Attributes
 ----------
-TODO: List your cookbook attributes here.
 
-e.g.
 #### pgd_cookbook::default
 <table>
   <tr>
@@ -26,115 +25,89 @@ e.g.
     <th>Description</th>
     <th>Default</th>
   </tr>
+   <tr>
+    <td><tt>['pgd']['pgd_path']</tt></td>
+    <td>String</td>
+    <td>Full path to the location PGD gets cloned. Note: This is not where it is installed.</td>
+  </tr>
   <tr>
-    <td><tt>['pgd_cookbook']['bacon']</tt></td>
+    <td><tt>['pgd']['virtualenv_path']</tt></td>
+    <td>String</td>
+    <td>Where to actually install PGD to. This is the location setup.sh will create GWM's virtualenv</td>
+    <td><tt>nil</tt></td>
+  </tr>
+  <tr>
+    <td><tt>['pgd']['user']</tt></td>
+    <td>String</td>
+    <td>User to change to when running commands</td>
+    <td><tt>nil</tt></td>
+  </tr>
+  <tr>
+    <td><tt>['pgd']['group']</tt></td>
+    <td>String</td>
+    <td>Group to change to when running commands</td>
+    <td><tt>nil</tt></td>
+  </tr>
+  <td><tt>['pgd']['debug']</tt></td>
     <td>Boolean</td>
-    <td>whether to include bacon</td>
-    <td><tt>true</tt></td>
+    <td>Whether or not to set the Django debug mode on or off</td>
+    <td><tt>false</tt></td>
   </tr>
-</table>
+  <tr>
+    <td><tt>['pgd']['static_root']</tt></td>
+    <td>String</td>
+    <td>Absolute path to where you want staticfiles to be collected to</td>
+    <td><tt>/opt/pgd/collected_static</tt></td>
+  </tr>
+  <tr>
+    <td><tt>['pgd']['static_url']</tt></td>
+    <td>String</td>
+    <td>Url to find GWM's static files at.</td>
+    <td><tt>/static</tt></td>
+  </tr>
+  <tr>
+    <td><tt>['pgd']['database']['engine']</tt></td>
+    <td>String</td>
+    <td>See https://docs.djangoproject.com/en/1.6/ref/settings/#databases</td>
+    <td><tt>nil</tt></td>
+  </tr>
+  <tr>
+    <td><tt>['pgd']['database']['name']</tt></td>
+    <td>String</td>
+    <td>See https://docs.djangoproject.com/en/1.6/ref/settings/#databases</td>
+    <td><tt>nil</tt></td>
+  </tr>
+  <tr>
+    <td><tt>['pgd']['database']['user']</tt></td>
+    <td>String</td>
+    <td>See https://docs.djangoproject.com/en/1.6/ref/settings/#databases</td>
+    <td><tt>nil</tt></td>
+  </tr>
+  <tr>
+    <td><tt>['pgd']['database']['password']</tt></td>
+    <td>String</td>
+    <td>See https://docs.djangoproject.com/en/1.6/ref/settings/#databases</td>
+    <td><tt>nil</tt></td>
+  </tr>
+  <tr>
+    <td><tt>['pgd']['database']['host']</tt></td>
+    <td>String</td>
+    <td>See https://docs.djangoproject.com/en/1.6/ref/settings/#databases</td>
+    <td><tt>nil</tt></td>
+  </tr>
+  <tr>
+    <td><tt>['pgd']['database']['port']</tt></td>
+    <td>String</td>
+    <td>See https://docs.djangoproject.com/en/1.6/ref/settings/#databases</td>
+    <td><tt>nil</tt></td>
+  </tr>
 
-Dependent Cookbooks
------------------
-<table>
-  <tr>
-    <th>Cookbook</th>
-    <th>URL</th>
-  </tr>
-  <tr>
-    <td>apache2</td>
-    <td>https://github.com/onehealth-cookbooks/apache2</td>
-  </tr>
-  <tr>
-    <td>apt</td>
-    <td>https://github.com/opscode-cookbooks/apt</td>
-  </tr>
-  <tr>
-    <td>aws</td>
-    <td>https://github.com/opscode-cookbooks/aws</td>
-  </tr>
-  <tr>
-    <td>build-essential</td>
-    <td>https://github.com/opscode-cookbooks/build-essential</td>
-  </tr>
-  <tr>
-    <td>chef-sugar</td>
-    <td>https://github.com/sethvargo/chef-sugar</td>
-  </tr>
-  <tr>
-    <td>database</td>
-    <td>https://github.com/opscode-cookbooks/database</td>
-  </tr>
-  <tr>
-    <td>freebsd</td>
-    <td>https://github.com/opscode-cookbooks/freebsd</td>
-  </tr>
-  <tr>
-    <td>git</td>
-    <td>https://github.com/jssjr/git</td>
-  </tr>
-  <tr>
-    <td>iptables</td>
-    <td>https://github.com/opscode-cookbooks/iptables</td>
-  </tr>
-  <tr>
-    <td>logrotate</td>
-    <td>https://github.com/stevendanna/logrotate</td>
-  </tr>
-  <tr>
-    <td>mysql</td>
-    <td>https://github.com/opscode-cookbooks/mysql</td>
-  </tr>
-  <tr>
-    <td>mysql-chef_gem</td>
-    <td>https://github.com/opscode-cookbooks/mysql-chef_gem</td>
-  </tr>
-  <tr>
-    <td>openssl</td>
-    <td>https://github.com/opscode-cookbooks/openssl</td>
-  </tr>
-  <tr>
-    <td>pacman</td>
-    <td>https://github.com/jesseadams/pacman</td>
-  </tr>
-  <tr>
-    <td>postgresql</td>
-    <td>https://github.com/hw-cookbooks/postgresql</td>
-  </tr>
-  <tr>
-    <td>python</td>
-    <td>https://github.com/poise/python</td>
-  </tr>
-  <tr>
-    <td>ubuntu</td>
-    <td>https://github.com/opscode-cookbooks/ubuntu</td>
-  </tr>
-  <tr>
-    <td>xfs</td>
-    <td>https://github.com/opscode-cookbooks/xfs</td>
-  </tr>
-  <tr>
-    <td>yum</td>
-    <td>https://github.com/opscode-cookbooks/yum</td>
-  </tr>
-  <tr>
-    <td>yum-epel</td>
-    <td>https://github.com/opscode-cookbooks/yum-epel</td>
-  </tr>
-  <tr>
-    <td>yum-mysql-community</td>
-    <td>https://github.com/opscode-cookbooks/yum-mysql-community</td>
-  </tr>
 </table>
-
 
 Usage
 -----
 #### pgd_cookbook::default
-TODO: Write usage instructions for each cookbook.
-
-e.g.
-Just include `pgd_cookbook` in your node's `run_list`:
+Just include `pgd_cookbook` in your node's `run_list`.
 
 ```json
 {
@@ -144,6 +117,31 @@ Just include `pgd_cookbook` in your node's `run_list`:
   ]
 }
 ```
+
+#### pgd_cookbook::bootstrap_user
+Just include `pgd_cookbook::bootstrap_user` in addition to one of the previous
+recipes in `run_list`:
+
+```json
+{
+  "name":"my_node",
+  "run_list": [
+    "recipe[pgd_cookbook::default]"
+    "recipe[pgd_cookbook::bootstrap_user]"
+  ]
+}
+```
+
+Then set the attribute `node['pgd']['superuser']` to something like
+this:
+
+````json
+{
+  "username": "foo",
+  "password": "bar",
+  "email": "foo@bar.com"
+}
+````
 
 Contributing
 ------------
