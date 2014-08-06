@@ -21,13 +21,11 @@
       "apache": {
         "server_aliases": ["localhost"]
       },
-      "superusers": [
-        {
-          "username": "admin",
-          "email": "admin@example.org",
+      "superuser": {
+          "username": "sarvesh",
+          "email": "sarvesh@example.org",
           "password": "1991"
-        }
-      ]
+      }
     }
   },
   "chef_type": "environment",

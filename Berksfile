@@ -4,3 +4,4 @@ metadata
 
 cookbook "yum"
 cookbook "apt"
+cookbook "freebsd"

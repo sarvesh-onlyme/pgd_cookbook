@@ -14,7 +14,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.hostname = "pgd-cookbook-berkshelf"
 
   # Set the version of chef to install using the vagrant-omnibus plugin
-  config.omnibus.chef_version = :latest
+  config.omnibus.chef_version = 11.12.8
 
   # Every Vagrant virtual environment requires a box to build off of.
   config.vm.box = "opscode_ubuntu-12.04_provisionerless"

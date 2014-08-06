@@ -6,6 +6,7 @@ driver:
 
 provisioner:
   name: chef_solo
+  require_chef_omnibus: 11.12.8
 
 platforms:
   - name: ubuntu-12.04
@@ -17,6 +18,7 @@ suites:
       solo_rb:
         environment: vagrant
     run_list:
-      - recipe[pgd_cookbook::default]
+#      - recipe[pgd_cookbook::default]
       - recipe[pgd_cookbook::database]
+#      - recipe[pgd_cookbook::create_user]
     attributes:
