@@ -22,9 +22,9 @@
         "server_aliases": ["localhost"]
       },
       "superuser": {
-          "username": "sarvesh",
-          "email": "sarvesh@example.org",
-          "password": "1991"
+          "username": "admin",
+          "email": "admin@example.org",
+          "password": "password"
       }
     }
   },

@@ -47,4 +47,5 @@ template config_file do
   })
 end
 
+include_recipe "pgd_cookbook::database"
 print "PGD Done"
