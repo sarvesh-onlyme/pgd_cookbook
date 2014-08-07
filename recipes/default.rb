@@ -13,6 +13,7 @@ include_recipe "python"
 include_recipe "mysql::client"
 include_recipe "mysql::server"
 include_recipe "pgd_cookbook::apache"
+include_recipe "git"
 
 service 'apache2' do
   action [ :enable, :start ]
@@ -30,6 +31,13 @@ apt_package "libffi-dev" do
   action :install
 end
 
+git node['pgd']['pgd_path'] do
+  repository node['pgd']['git']['repository']
+  revision node['pgd']['git']['revision']
+  user node['pgd']['user']
+  group node['pgd']['group']
+end
+
 python_pip "#{node['pgd']['pgd_path']}/requirements.txt" do
   options "-r"
   virtualenv node['pgd']['virtualenv_path']
@@ -39,8 +47,8 @@ end
 config_file = "#{node['pgd']['pgd_path']}/pgd/settings.py" #::File.join(node['ganeti_webmgr']['config_dir'], 'config.yml')
 template config_file do
   source "django_settings.py.erb"
-  owner "vagrant"
-  group "vagrant"
+  owner node['pgd']['user']
+  group node['pgd']['group']
   mode "0644"
   variables({
   	:app => node['pgd']

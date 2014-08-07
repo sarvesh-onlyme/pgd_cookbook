@@ -24,3 +24,7 @@ default['pgd']['apache']['server_name'] = node['hostname']
 default['pgd']['apache']['server_aliases'] = [node['fqdn']]
 default['pgd']['apache']['processes'] = 4
 default['pgd']['apache']['threads'] = 1
+
+#PGD git
+default['pgd']['git']['repository'] = "https://github.com/sarvesh-onlyme/pgd.git"
+default['pgd']['git']['revision'] = "master"

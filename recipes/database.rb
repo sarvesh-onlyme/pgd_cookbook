@@ -81,11 +81,11 @@ ftp_update = ::File.join(pgd, 'pgd_splicer', 'ftpupdate.py')
 process_PDBTask = ::File.join(pgd, 'pgd_splicer', 'ProcessPDBTask.py')
 selected_proteins = ::File.join(pgd, 'selected_proteins.txt')
 
-  #{python} #{dunbrack_selector} --pipeout > #{selected_proteins}
 log "Selecting Proteins"
 execute "run_protein_select" do
   cwd pgd
   command <<-EOS
+  #{python} #{dunbrack_selector} --pipeout > #{selected_proteins}
   #{python} #{ftp_update} --pipein < #{selected_proteins}
   #{python} #{process_PDBTask} --pipein < #{selected_proteins}
   EOS
