@@ -19,6 +19,7 @@ password = user['password']
 log "Creating django superuser #{username}"
 
 execute "create_superuser" do
+  ignore_failure true
   command <<-EOS
   #{python} #{manage} createsuperuser --noinput --username=#{username} --email #{email}
   #{python} -c \"from django.contrib.auth.models import User;u=User.objects.get(username='#{username}');u.set_password('#{password}');u.save();\"
@@ -26,5 +27,4 @@ execute "create_superuser" do
   user node['pgd']['user']
   group node['pgd']['group']
   environment env
-  ignore_failure true
 end

@@ -19,5 +19,5 @@ suites:
         environment: vagrant
     run_list:
       - recipe[pgd_cookbook::default]
-#      - recipe[pgd_cookbook::bootstrap_user]
+      - recipe[pgd_cookbook::bootstrap_user]
     attributes:

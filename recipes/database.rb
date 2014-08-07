@@ -64,6 +64,15 @@ database_user db_user do
   action :grant
 end
 
+# Give our user permissions to the test-DB
+database_user db_user do
+  provider db_user_provider
+  connection connection_info
+  database_name 'test_'+node['pgd']['database']['name']
+  privileges [:all]
+  action :grant
+end
+
 python = ::File.join(node['pgd']['virtualenv_path'], 'bin', 'python')
 pgd = node['pgd']['pgd_path']
 
