@@ -12,9 +12,9 @@ env = {
 # Use the attributes to bootstrap users if set, otherwise use databag users
 user = node['pgd']['superuser']
 
-username = user['username']
-email = user['email']
-password = user['password']
+username = node['pgd']['username']
+email = node['pgd']['email']
+password = node['pgd']['password']
 
 log "Creating django superuser #{username}"
 

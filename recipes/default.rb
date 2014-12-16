@@ -2,18 +2,19 @@
 # Cookbook Name:: pgd_cookbook
 # Recipe:: default
 #
-# Copyright 2014, YOUR_COMPANY_NAME
+# Copyright 2014, OSU Open Source Lab 
 #
 # All rights reserved - Do Not Redistribute
 #
 
-include_recipe "ubuntu"
-include_recipe "apt"
+include_recipe "pgd_cookbook::_centos" 
+include_recipe "build-essential"
+include_recipe "git"
 include_recipe "python"
 include_recipe "mysql::client"
 include_recipe "mysql::server"
 include_recipe "pgd_cookbook::apache"
-include_recipe "git"
+include_recipe "yum-ius"
 
 service 'apache2' do
   action [ :enable, :start ]
@@ -27,7 +28,7 @@ python_virtualenv node['pgd']['virtualenv_path'] do
 end
 
 # cairoffi dependency
-apt_package "libffi-dev" do
+yum_package "libffi-devel" do
   action :install
 end
 
