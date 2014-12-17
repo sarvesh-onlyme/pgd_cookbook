@@ -28,9 +28,8 @@ python_virtualenv node['pgd']['virtualenv_path'] do
 end
 
 # cairoffi dependency
-yum_package "libffi-devel" do
+package "libffi-devel"
   action :install
-end
 
 git node['pgd']['pgd_path'] do
   repository node['pgd']['git']['repository']
@@ -57,4 +56,3 @@ template config_file do
 end
 
 include_recipe "pgd_cookbook::database"
-print "PGD Done"
