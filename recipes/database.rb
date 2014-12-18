@@ -94,9 +94,10 @@ log "Selecting Proteins"
 execute "run_protein_select" do
   cwd pgd
   command <<-EOS
+  ln -s pgd/settings.py settings.py
   #{python} #{dunbrack_selector} --pipeout > #{selected_proteins}
-  #{python} #{ftp_update} --pipein < #{selected_proteins}
-  #{python} #{process_PDBTask} --pipein < #{selected_proteins}
+  head #{selected_proteins} | #{python} #{ftp_update} --pipein
+  head #{selected_proteins} | #{python} #{process_PDBTask} --pipein
   EOS
   user node['pgd']['user']
   group node['pgd']['group']

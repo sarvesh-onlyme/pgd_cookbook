@@ -9,15 +9,10 @@ provisioner:
   require_chef_omnibus: 11.12.8
 
 platforms:
-  - name: ubuntu-12.04
-  - name: centos-6.4
+  - name: centos-6.6
 
 suites:
   - name: default
-    provisioner:
-      solo_rb:
-        environment: vagrant
     run_list:
       - recipe[pgd_cookbook::default]
       - recipe[pgd_cookbook::bootstrap_user]
-    attributes:
