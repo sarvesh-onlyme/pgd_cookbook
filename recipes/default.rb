@@ -27,9 +27,10 @@ python_virtualenv node['pgd']['virtualenv_path'] do
   action :create
 end
 
-# cairoffi dependency
-package "libffi-devel"
+# cairocffi dependency
+package "libffi-devel" do
   action :install
+end
 
 git node['pgd']['pgd_path'] do
   repository node['pgd']['git']['repository']
