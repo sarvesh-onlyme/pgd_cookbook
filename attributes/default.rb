@@ -28,7 +28,7 @@ default['pgd']['apache']['processes'] = 4
 default['pgd']['apache']['threads'] = 1
 
 #PGD git
-default['pgd']['git']['repository'] = "https://github.com/sarvesh-onlyme/pgd.git"
-default['pgd']['git']['revision'] = "master"
+default['pgd']['git']['repository'] = "https://github.com/osuosl/pgd.git"
+default['pgd']['git']['revision'] = "develop"
 
 override['build-essential']['compile_time'] = true
