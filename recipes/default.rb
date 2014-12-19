@@ -43,7 +43,6 @@ python_pip "#{node['pgd']['pgd_path']}/requirements.txt" do
   action :install
 end
 
-#config_file = "#{node['pgd']['pgd_path']}/pgd/settings.py" #::File.join(node['ganeti_webmgr']['config_dir'], 'config.yml')
 config_file = "#{node['pgd']['pgd_path']}/settings.py" #::File.join(node['ganeti_webmgr']['config_dir'], 'config.yml')
 template config_file do
   source "django_settings.py.erb"
