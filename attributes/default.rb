@@ -16,7 +16,7 @@ default['pgd']['database']['engine'] = "django.db.backends.mysql"
 default['pgd']['database']['name'] = "pgd-dev"
 default['pgd']['database']['user'] = "pgd-user"
 default['pgd']['database']['password'] = "pdg-pass"
-default['pgd']['database']['host'] = nil
+default['pgd']['database']['host'] = nil #Don't forget to add a database
 default['pgd']['database']['port'] = nil
 
 #Apache cofigurations
@@ -26,7 +26,7 @@ default['pgd']['apache']['processes'] = 4
 default['pgd']['apache']['threads'] = 1
 
 #PGD git
-default['pgd']['git']['repository'] = "https://github.com/sarvesh-onlyme/pgd.git"
-default['pgd']['git']['revision'] = "master"
+default['pgd']['git']['repository'] = "https://github.com/osuosl/pgd.git"
+default['pgd']['git']['revision'] = "develop"
 
 override['build-essential']['compile_time'] = true
