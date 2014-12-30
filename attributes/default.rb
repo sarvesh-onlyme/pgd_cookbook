@@ -12,10 +12,10 @@ default['pgd']['static_root'] = ::File.join(default['pgd']['pgd_path'], 'static'
 default['pgd']['static_url'] = "/static/"	#Trailing slash is must
 
 # Settings.py database
-default['pgd']['database']['engine'] = "django.db.backends.mysql"
-default['pgd']['database']['name'] = "pgd-dev"
-default['pgd']['database']['user'] = "pgd-user"
-default['pgd']['database']['password'] = "pdg-pass"
+default['pgd']['database']['engine'] = nil
+default['pgd']['database']['name'] = nil
+default['pgd']['database']['user'] = nil
+default['pgd']['database']['password'] = nil
 default['pgd']['database']['host'] = nil
 default['pgd']['database']['port'] = nil
 

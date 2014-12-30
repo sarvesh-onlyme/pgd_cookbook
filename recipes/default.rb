@@ -16,6 +16,8 @@ include_recipe "mysql::server"
 include_recipe "pgd_cookbook::apache"
 include_recipe "yum-ius"
 
+secrets = Chef::EncryptedDataBagItem.load('pgd', 'pgd_secrets')
+
 service 'apache2' do
   action [ :enable, :start ]
 end
@@ -50,7 +52,8 @@ template config_file do
   group node['pgd']['group']
   mode "0644"
   variables({
-  	:app => node['pgd']
+  	:app => node['pgd'],
+    :secrets => secrets
   })
 end
 
