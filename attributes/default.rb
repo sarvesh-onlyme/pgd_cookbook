@@ -8,8 +8,7 @@ default['pgd']['application_name'] = 'pgd'
 
 # Django Settings.py
 default['pgd']['debug'] = 'True'
-default['pgd']['static_root'] = ::File.join(default['pgd']['pgd_path'], 'stati\
-c')
+default['pgd']['static_root'] = ::File.join(default['pgd']['pgd_path'], 'static')
 default['pgd']['static_url'] = '/static/'	# Trailing slash is must
 
 # Settings.py database
@@ -18,7 +17,7 @@ default['pgd']['static_url'] = '/static/'	# Trailing slash is must
 default['pgd']['database']['engine'] = 'django.db.backends.mysql'
 default['pgd']['database']['name'] = 'pgd-dev'
 default['pgd']['database']['user'] = 'pgd-user'
-default['pgd']['database']['password'] = 'pdg-pass'
+default['pgd']['database']['password'] = 'pgd-pass'
 default['pgd']['database']['host'] = nil # Don't forget to add a database
 default['pgd']['database']['port'] = nil
 
