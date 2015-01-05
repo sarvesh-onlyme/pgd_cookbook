@@ -2,9 +2,6 @@ secrets = Chef::EncryptedDataBagItem.load('pgd', 'pgd_secrets')
 db_host = secrets['db_host']
 db_port = secrets['db_port']
 
-server_user = secrets['db_user']
-server_password = secrets['db_password']
-
 db_user = secrets['db_user']
 db_pass = secrets['db_password']
 
@@ -22,8 +19,8 @@ mysql_connection_info = {
 # Postgres Connection info
 postgresql_connection_info = {
   :host => db_host,
-  :username => server_user || 'postgres',
-  :password => server_password
+  :username => db_user || 'postgres',
+  :password => db_pass
 }
 
 case db_engine.split('.').last

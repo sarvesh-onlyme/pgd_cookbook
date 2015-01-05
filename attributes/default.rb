@@ -12,6 +12,8 @@ default['pgd']['static_root'] = ::File.join(default['pgd']['pgd_path'], 'static'
 default['pgd']['static_url'] = "/static/"	#Trailing slash is must
 
 # Settings.py database
+# These nil values will not work by default, either setup the databag or change
+# these values
 default['pgd']['database']['engine'] = nil
 default['pgd']['database']['name'] = nil
 default['pgd']['database']['user'] = nil

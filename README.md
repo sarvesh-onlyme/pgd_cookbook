@@ -69,7 +69,7 @@ Attributes
     <td><tt>['pgd']['database']['engine']</tt></td>
     <td>String</td>
     <td>See https://docs.djangoproject.com/en/1.6/ref/settings/#databases</td>
-    <td><tt>nil</tt></td>
+    <td><tt>nil #This default value will break the cookbook.</tt></td>
   </tr>
   <tr>
     <td><tt>['pgd']['database']['name']</tt></td>

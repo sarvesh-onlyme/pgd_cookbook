@@ -7,6 +7,7 @@
 # All rights reserved - Do Not Redistribute
 #
 
+include_recipe "pgd_cookbook::check-attributes"
 include_recipe "pgd_cookbook::_centos" 
 include_recipe "build-essential"
 include_recipe "git"
