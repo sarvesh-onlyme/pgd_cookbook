@@ -9,12 +9,16 @@ driver_config:
   openstack_tenant: <%= ENV['OS_TENANT_NAME'] %>
   floating_ip_pool: <%= ENV['OS_FLOATING_IP_POOL'] %>
   flavor_ref: <%= ENV['OS_FLAVOR_REF'] %>
-  security_groups:
-    - <%= ENV['OS_SECURITY_GROUP_NO_FIREWALL'] %>
+
+attributes:
+    pgd:
+        pgd_path: "/home/centos/pgd"
+        virtualenv_path: "/home/centos/vrt"
+        user: "centos"
+        group: "centos"
 
 provisioner:
   name: chef_solo
-  require_chef_omnibus: 11.12.8
   attributes:
     authorization:
       sudo:
