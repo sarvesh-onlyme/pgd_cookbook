@@ -4,6 +4,13 @@ driver:
 #  synced_folders: 
 #    - ["/var/www/work/my/PGD/pgd_1.4/vagrant/pgd", "/home/vagrant/pgd"]
 
+attributes:
+    pgd:
+        pgd_path: '/home/vagrant/pgd'
+        virtualenv_path: '/home/vagrant/vrt'
+        user: 'vagrant'
+        group: 'vagrant'
+
 provisioner:
   name: chef_solo
   data_bags_path: test/integration/data_bags

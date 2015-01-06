@@ -11,7 +11,7 @@ default['pgd']['debug'] = 'True'
 default['pgd']['static_root'] = ::File.join(default['pgd']['pgd_path'], 'static')
 default['pgd']['static_url'] = '/static/'	# Trailing slash is must
 
-# Settings.py database
+# Settings.py databaset
 # These nil values will not work by default, either setup the databag or change
 # these values
 default['pgd']['database']['engine'] = 'django.db.backends.mysql'

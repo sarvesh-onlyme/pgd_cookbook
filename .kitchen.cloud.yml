@@ -10,6 +10,13 @@ driver_config:
   floating_ip_pool: <%= ENV['OS_FLOATING_IP_POOL'] %>
   flavor_ref: <%= ENV['OS_FLAVOR_REF'] %>
 
+attributes:
+    pgd:
+        pgd_path: "/home/centos/pgd"
+        virtualenv_path: "/home/centos/vrt"
+        user: "centos"
+        group: "centos"
+
 provisioner:
   name: chef_solo
   attributes:
