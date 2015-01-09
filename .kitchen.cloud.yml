@@ -10,13 +10,6 @@ driver_config:
   floating_ip_pool: <%= ENV['OS_FLOATING_IP_POOL'] %>
   flavor_ref: <%= ENV['OS_FLAVOR_REF'] %>
 
-attributes:
-    pgd:
-        pgd_path: "/home/centos/pgd"
-        virtualenv_path: "/home/centos/vrt"
-        user: "centos"
-        group: "centos"
-
 provisioner:
   name: chef_solo
   attributes:
@@ -33,9 +26,16 @@ platforms:
     driver_config:
         username: centos
         image_ref: "CentOS 6.6"
+    attributes:
+        pgd:
+            pgd_path: "/home/centos/pgd"
+            virtualenv_path: "/home/centos/vrt"
+            user: "centos"
+            group: "centos"
 
 suites:
   - name: default
     run_list:
       - recipe[pgd_cookbook::default]
       - recipe[pgd_cookbook::bootstrap_user]
+
