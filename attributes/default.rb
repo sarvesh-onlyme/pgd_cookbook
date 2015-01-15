@@ -32,3 +32,7 @@ default['pgd']['git']['repository'] = "https://github.com/osuosl/pgd.git"
 default['pgd']['git']['revision'] = "develop"
 
 override['build-essential']['compile_time'] = true
+
+# Bootstrap User
+default['pgd']['username'] = "Your Name"
+default['pgd']['email'] = "your_email@example.com"
