@@ -12,11 +12,13 @@ default['pgd']['static_root'] = ::File.join(default['pgd']['pgd_path'], 'static'
 default['pgd']['static_url'] = "/static/"	#Trailing slash is must
 
 # Settings.py database
-default['pgd']['database']['engine'] = "django.db.backends.mysql"
+# These nil values will not work by default, either setup the databag or change
+# these values
+default['pgd']['database']['engine'] = "django.db.backends.mysql" 
 default['pgd']['database']['name'] = "pgd-dev"
 default['pgd']['database']['user'] = "pgd-user"
 default['pgd']['database']['password'] = "pdg-pass"
-default['pgd']['database']['host'] = nil
+default['pgd']['database']['host'] = nil #Don't forget to add a database
 default['pgd']['database']['port'] = nil
 
 #Apache cofigurations

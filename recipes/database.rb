@@ -1,12 +1,12 @@
+secrets = Chef::EncryptedDataBagItem.load('pgd', 'pgd_secrets')
+db_host = secrets['db_host']
+db_port = secrets['db_port']
 
-db_host = node['pgd']['database']['host']
-db_port = node['pgd']['database']['port']
+db_user = secrets['db_user']
+db_pass = secrets['db_password']
 
-server_user = node['pgd']['database']['user']
-server_password = node['pgd']['database']['password']
-
-db_user = node['pgd']['database']['user']
-db_pass = node['pgd']['database']['password']
+db_engine = secrets['db_engine']
+db_name = secrets['db_name']
 
 # Myql connect info
 mysql_connection_info = {
@@ -19,11 +19,11 @@ mysql_connection_info = {
 # Postgres Connection info
 postgresql_connection_info = {
   :host => db_host,
-  :username => server_user || 'postgres',
-  :password => server_password
+  :username => db_user || 'postgres',
+  :password => db_pass
 }
 
-case node['pgd']['database']['engine'].split('.').last
+case db_engine.split('.').last
 when 'mysql'
   include_recipe "mysql::client"
   include_recipe "database::mysql"
@@ -39,8 +39,8 @@ when 'psycopg2', 'postgresql_psycopg2'
 end
 
 # Creating database
-log "Creating Database with name #{node['pgd']['database']['name']}"
-database node['pgd']['database']['name'] do
+log "Creating Database with name #{db_name}"
+database db_name do
   provider db_provider
   connection connection_info
   action :create
@@ -50,7 +50,7 @@ end
 database_user db_user do
   provider db_provider
   connection connection_info
-  database_name node['pgd']['database']['name']
+  database_name db_name
   password db_pass
   action :create
 end
@@ -59,7 +59,7 @@ end
 database_user db_user do
   provider db_user_provider
   connection connection_info
-  database_name node['pgd']['database']['name']
+  database_name db_name
   privileges [:all]
   action :grant
 end
@@ -68,7 +68,7 @@ end
 database_user db_user do
   provider db_user_provider
   connection connection_info
-  database_name 'test_'+node['pgd']['database']['name']
+  database_name 'test_'+db_name
   privileges [:all]
   action :grant
 end

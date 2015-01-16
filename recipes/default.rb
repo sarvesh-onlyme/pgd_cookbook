@@ -7,6 +7,7 @@
 # All rights reserved - Do Not Redistribute
 #
 
+include_recipe "pgd_cookbook::check-attributes"
 include_recipe "pgd_cookbook::_centos" 
 include_recipe "build-essential"
 include_recipe "git"
@@ -15,6 +16,8 @@ include_recipe "mysql::client"
 include_recipe "mysql::server"
 include_recipe "pgd_cookbook::apache"
 include_recipe "yum-ius"
+
+secrets = Chef::EncryptedDataBagItem.load('pgd', 'pgd_secrets')
 
 service 'apache2' do
   action [ :enable, :start ]
@@ -50,7 +53,8 @@ template config_file do
   group node['pgd']['group']
   mode "0644"
   variables({
-  	:app => node['pgd']
+  	:app => node['pgd'],
+    :secrets => secrets
   })
 end
 
