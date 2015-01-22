@@ -34,5 +34,6 @@ default['pgd']['git']['revision'] = "develop"
 override['build-essential']['compile_time'] = true
 
 # Bootstrap User
-default['pgd']['username'] = "Your Name"
+default['pgd']['username'] = "Your_Name" #Only letters, digits, and underscore
 default['pgd']['email'] = "your_email@example.com"
+default['pgd']['password'] = "secret_password"
