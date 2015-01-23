@@ -9,6 +9,7 @@
 
 include_recipe "pgd_cookbook::check-attributes"
 include_recipe "pgd_cookbook::_centos" 
+include_recipe "yum-osuosl"
 include_recipe "build-essential"
 include_recipe "git"
 include_recipe "python"
@@ -32,6 +33,11 @@ end
 
 # cairocffi dependency
 package "libffi-devel"
+#custom dssp package for pgd
+package "osuosl-dssp" do
+    options '--nogpgcheck'
+    action :install
+end
 
 git node['pgd']['pgd_path'] do
   repository node['pgd']['git']['repository']
