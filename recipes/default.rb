@@ -20,10 +20,6 @@ include_recipe "yum-ius"
 
 secrets = Chef::EncryptedDataBagItem.load('pgd', 'pgd_secrets')
 
-service 'apache2' do
-  action [ :enable, :start ]
-end
-
 python_virtualenv node['pgd']['virtualenv_path'] do
   interpreter "python2.7"
   owner node['pgd']['user']
