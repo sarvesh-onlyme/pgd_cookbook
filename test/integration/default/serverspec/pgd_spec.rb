@@ -1,11 +1,9 @@
 require 'serverspec'
 
-include Serverspec::Helper::Exec
-include Serverspec::Helper::DetectOS
+set :background, :exec
 
-describe process("python2.7") do
-  its(:args) { should match /foo/ }
-  it { should be_running }
+describe package("python27") do
+  it { should be_installed }
 end
 
 describe user("vagrant") do
@@ -26,8 +24,9 @@ describe file("/home/vagrant/pgd/settings.py") do
 # possibly giving away secrets.
 end
 
-describe process("httpd") do
-    it { should_be_running }
+describe service("httpd") do
+    it { should be_enabled }
+    it { should be_running }
 end
 
 describe file("/home/vagrant/pgd") do
@@ -38,6 +37,6 @@ describe file("/home/vagrant/vrt") do
     it { should be_directory }
 end
 
-descrbe file("/home/vagrant/pgd/selected_protiens.txt") do
-    it { should exist }
+describe file("/home/vagrant/pgd/selected_proteins.txt") do
+    it { should be_file }
 end
