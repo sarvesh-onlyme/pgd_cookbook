@@ -37,3 +37,7 @@ override['build-essential']['compile_time'] = true
 default['pgd']['username'] = "Your_Name" #Only letters, digits, and underscore
 default['pgd']['email'] = "your_email@example.com"
 default['pgd']['password'] = "secret_password"
+
+default['mysql']['server_debian_password'] = "password"
+default['mysql']['server_root_password'] = "password"
+default['mysql']['server_repl_password'] = "password"
