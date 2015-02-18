@@ -2,37 +2,44 @@
 # Cookbook Name:: pgd_cookbook
 # Recipe:: default
 #
-# Copyright 2014, OSU Open Source Lab 
+# Copyright 2014, OSU Open Source Lab
 #
 # All rights reserved - Do Not Redistribute
 #
 
-include_recipe "pgd_cookbook::check-attributes"
-include_recipe "pgd_cookbook::_centos" 
-include_recipe "yum-osuosl"
-include_recipe "build-essential"
-include_recipe "git"
-include_recipe "python"
-include_recipe "mysql::client"
-include_recipe "mysql::server"
-include_recipe "pgd_cookbook::apache"
-include_recipe "yum-ius"
+include_recipe 'pgd_cookbook::check-attributes'
+include_recipe 'pgd_cookbook::_centos'
+include_recipe 'yum-osuosl'
+include_recipe 'build-essential'
+include_recipe 'git'
+include_recipe 'python'
+include_recipe 'mysql::client'
+include_recipe 'mysql::server'
+include_recipe 'pgd_cookbook::apache'
+include_recipe 'yum-ius'
 
 secrets = Chef::EncryptedDataBagItem.load('pgd', 'pgd_secrets')
 
 python_virtualenv node['pgd']['virtualenv_path'] do
-  interpreter "python2.7"
+  interpreter 'python2.7'
   owner node['pgd']['user']
   group node['pgd']['group']
   action :create
 end
 
 # cairocffi dependency
-package "libffi-devel"
-#custom dssp package for pgd
-package "osuosl-dssp" do
-    options '--nogpgcheck'
-    action :install
+package 'libffi-devel'
+# custom dssp package for pgd
+package 'osuosl-dssp' do
+  options '--nogpgcheck'
+  action :install
+end
+
+directory node['pgd']['pgd_path'] do
+  owner node['pgd']['user']
+  group node['pgd']['group']
+  mode '0755'
+  action :create
 end
 
 git node['pgd']['pgd_path'] do
@@ -43,21 +50,22 @@ git node['pgd']['pgd_path'] do
 end
 
 python_pip "#{node['pgd']['pgd_path']}/requirements.txt" do
-  options "-r"
+  options '-r'
   virtualenv node['pgd']['virtualenv_path']
   action :install
 end
 
-config_file = "#{node['pgd']['pgd_path']}/settings.py" #::File.join(node['ganeti_webmgr']['config_dir'], 'config.yml')
+config_file = "#{node['pgd']['pgd_path']}/settings.py"
+#::File.join(node['gane\ti_webmgr']['config_dir'], 'config.yml')
 template config_file do
-  source "django_settings.py.erb"
+  source 'django_settings.py.erb'
   owner node['pgd']['user']
   group node['pgd']['group']
-  mode "0644"
-  variables({
-  	:app => node['pgd'],
-    :secrets => secrets
-  })
+  mode '0644'
+  variables(
+    app: node['pgd'],
+    secrets: secrets
+           )
 end
 
-include_recipe "pgd_cookbook::database"
+include_recipe 'pgd_cookbook::database'
