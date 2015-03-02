@@ -1,7 +1,7 @@
-default['pgd']['pgd_path'] = '/opt/pgd'
-default['pgd']['virtualenv_path'] = '/opt/vrt'
-default['pgd']['user'] = 'vagrant'
-default['pgd']['group'] = 'vagrant'
+default['pgd']['pgd_path'] = "" #"/home/centos/pgd"
+default['pgd']['virtualenv_path'] = "" #"/home/centos/vrt"
+default['pgd']['user'] = "" #"centos"
+default['pgd']['group'] = "" #"centos"
 default['pgd']['superuser'] = []
 
 default['pgd']['application_name'] = 'pgd'
@@ -11,7 +11,7 @@ default['pgd']['debug'] = 'True'
 default['pgd']['static_root'] = ::File.join(default['pgd']['pgd_path'], 'static')
 default['pgd']['static_url'] = '/static/'	# Trailing slash is must
 
-# Settings.py databaset
+# Settings.py database
 # These nil values will not work by default, either setup the databag or change
 # these values
 default['pgd']['database']['engine'] = 'django.db.backends.mysql'

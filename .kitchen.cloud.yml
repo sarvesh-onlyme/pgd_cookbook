@@ -19,8 +19,6 @@ provisioner:
       sudo:
         users:
           - centos
-    omibus_updater:
-      disable: true
 
 platforms:
   - name: centos-6.6
