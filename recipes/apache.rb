@@ -23,7 +23,3 @@ web_app node['pgd']['application_name'] do
   wsgi_path wsgi_path
   python_path python_path
 end
-
-service 'apache2' do
-  action [:enable, :start]
-end

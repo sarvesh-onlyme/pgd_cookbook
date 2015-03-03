@@ -20,10 +20,12 @@ log 'Creating django superuser #{username}'
 
 execute 'create_superuser' do
   command <<-EOS
-  #{python} #{manage} createsuperuser --noinput --username=#{username} --email\
-=#{email}
-  #{python} -c \'from django.contrib.auth.models import User;u=User.objects.ge\
-t(username='#{username}');u.set_password('#{password}');u.save();\'
+  #{python} #{manage} createsuperuser --noinput --username=#{username}\
+    --email=#{email}
+  #{python} -c \"from django.contrib.auth.models import User;\
+    u=User.objects.get(username='#{username}');\
+    u.set_password('#{password}');\
+    u.save();\"
   EOS
   user node['pgd']['user']
   group node['pgd']['group']

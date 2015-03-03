@@ -1,14 +1,15 @@
-default['pgd']['pgd_path'] = "" #"/home/centos/pgd"
-default['pgd']['virtualenv_path'] = "" #"/home/centos/vrt"
-default['pgd']['user'] = "" #"centos"
-default['pgd']['group'] = "" #"centos"
+default['pgd']['pgd_path'] = '' # '/home/centos/pgd'
+default['pgd']['virtualenv_path'] = '' # '/home/centos/vrt'
+default['pgd']['user'] = '' # 'centos'
+default['pgd']['group'] = '' # 'centos'
 default['pgd']['superuser'] = []
 
 default['pgd']['application_name'] = 'pgd'
 
 # Django Settings.py
 default['pgd']['debug'] = 'True'
-default['pgd']['static_root'] = ::File.join(default['pgd']['pgd_path'], 'static')
+default['pgd']['static_root'] = ::File.join(default['pgd']['pgd_path'],
+                                            'static')
 default['pgd']['static_url'] = '/static/'	# Trailing slash is must
 
 # Settings.py database
