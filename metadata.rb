@@ -1,8 +1,8 @@
-name             'pgd_cookbook'
-maintainer       'Oregon State University'
-maintainer_email 'systems@osuosl.org'
-license          'All rights reserved'
-description      'Installs/Configures pgd_cookbook'
+name                'pgd_cookbook'
+maintainer          'OSU Open Source Lab'
+maintainer_email    'chef@osuosl.org'
+license             'Apache v2'
+description         'Installs/Configures pgd_cookbook'
 long_description IO.read(File.join(File.dirname(__FILE__), 'README.md'))
 version '0.1.0'
 
