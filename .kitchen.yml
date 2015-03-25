@@ -8,7 +8,12 @@ provisioner:
   name: chef_solo
   data_bags_path: test/integration/data_bags
   encrypted_data_bag_secret_key_path: test/integration/encrypted_data_bag_secret
-  require_chef_omnbus: 11.8.0
+  attributes:
+      pgd:
+          pgd_path: '/home/vagrant/pgd'
+          virtualenv_path: '/home/vagrant/vrt'
+          user: 'vagrant'
+          group: 'vagrant'
 
 platforms:
   - name: centos-6.6
