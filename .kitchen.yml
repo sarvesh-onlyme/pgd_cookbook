@@ -8,6 +8,7 @@ provisioner:
   name: chef_solo
   data_bags_path: test/integration/data_bags
   encrypted_data_bag_secret_key_path: test/integration/encrypted_data_bag_secret
+  require_chef_omnbus: 11.8.0
 
 platforms:
   - name: centos-6.6
