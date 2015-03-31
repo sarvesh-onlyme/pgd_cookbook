@@ -1,7 +1,10 @@
-source "https://api.berkshelf.com"
+source 'https://supermarket.chef.io'
 
 metadata
-
-cookbook "yum"
-cookbook "apt"
-cookbook "git"
+cookbook 'build-essential'
+cookbook 'database', '~> 2.3.1'
+cookbook 'git'
+cookbook 'python'
+cookbook 'yum-epel'
+cookbook 'yum-ius'
+cookbook 'yum-osuosl'
